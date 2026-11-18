@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- First release published from GitHub Actions with npm provenance (required to claim the app in the Twenty marketplace).
+- README: Acceliance presentation, support email in the app metadata.
+
 ## 0.1.0
 
 - "Call on mobile" button on People: sends an ntfy push to the caller's Android phone; tapping it opens the dialer with the contact's number.
