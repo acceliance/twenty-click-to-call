@@ -42,8 +42,9 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Update npm
-        # Trusted publishing requires npm 11.5.1 or later.
-        run: npm install -g npm@latest
+        # Trusted publishing requires npm 11.5.1 or later. Stay on npm 11: npm 12 changed the
+        # `npm pack --json` output and twenty 2.59 then fails with "invalid package description".
+        run: npm install -g npm@11
 
       - name: Install Twenty CLI
         run: npm install -g twenty@2.59.0
