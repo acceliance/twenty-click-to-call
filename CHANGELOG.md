@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Marketplace gallery: three screenshots (call button, logged call task, tasks tab) with a fictional contact.
+- Publish workflow fixes (Corepack, npm 11).
+
 ## 0.1.1
 
 - First release published from GitHub Actions with npm provenance (required to claim the app in the Twenty marketplace).

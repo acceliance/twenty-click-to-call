@@ -20,6 +20,12 @@ export default defineApplication({
   author: 'Acceliance',
   emailSupport: 'contact@acceliance.fr',
   logo: 'public/logo.svg',
+  // 8:5 screenshots of a fictional contact (Claire Martin, Northwind Traders)
+  galleryImages: [
+    'public/gallery/1-call-button.png',
+    'public/gallery/2-call-logged-task.png',
+    'public/gallery/3-tasks-tab.png',
+  ],
   websiteUrl: REPOSITORY_URL,
   issueReportUrl: `${REPOSITORY_URL}/issues`,
   applicationVariables: {

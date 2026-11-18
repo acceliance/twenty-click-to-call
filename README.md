@@ -44,6 +44,22 @@ Notifications go through [ntfy](https://ntfy.sh), an open-source push service yo
 
 > Android never lets an app place a call silently: the dialer opens and the user presses call.
 
+## 📸 Screenshots
+
+**1. One click on the contact.** The **Call** button (here in French, "Appeler") sits next to "Send email" on every person.
+
+![Call button on a contact](public/gallery/1-call-button.png)
+
+**2. The call is logged and opened.** While the phone rings the dialer, Twenty creates a done task, assigned to you and linked to the contact, and opens it for your notes.
+
+![Logged call task opened in the side panel](public/gallery/2-call-logged-task.png)
+
+**3. Every call stays in the contact's history.**
+
+![Call tasks on the contact](public/gallery/3-tasks-tab.png)
+
+*Screenshots use a fictional contact.*
+
 ## How it works
 
 ```
