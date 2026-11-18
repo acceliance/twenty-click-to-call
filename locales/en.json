@@ -1,0 +1,12 @@
+{
+  "Call task not created: {reason}": "Call task not created: {reason}",
+  "Notification not sent: {reason}": "Notification not sent: {reason}",
+  "Notification sent to your phone: {name}": "Notification sent to your phone: {name}",
+  "Select a single contact.": "Select a single contact.",
+  "commandMenuItem.label": {
+    "Call on mobile": "Call on mobile"
+  },
+  "commandMenuItem.shortLabel": {
+    "Call": "Call"
+  }
+}
