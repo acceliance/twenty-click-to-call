@@ -12,11 +12,13 @@ import {
 
 const REPOSITORY_URL = 'https://github.com/acceliance/twenty-click-to-call';
 
+// The marketplace "About" tab shows README.md (markdown only: no HTML, images are not rendered)
 export default defineApplication({
   universalIdentifier: APPLICATION_UNIVERSAL_IDENTIFIER,
   displayName: APP_DISPLAY_NAME,
   description: APP_DESCRIPTION,
   author: 'Acceliance',
+  emailSupport: 'contact@acceliance.fr',
   logo: 'public/logo.svg',
   websiteUrl: REPOSITORY_URL,
   issueReportUrl: `${REPOSITORY_URL}/issues`,

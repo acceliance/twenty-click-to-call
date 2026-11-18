@@ -1,6 +1,39 @@
-# Click to Call for Twenty
+[![Acceliance](https://www.acceliance.fr/media/wdxp1zys/logo-acc-seul-400.png)](https://www.acceliance.fr)
 
-Call a contact from your Android phone in one click, straight from [Twenty CRM](https://twenty.com).
+# Click to Call for Twenty, offered by Acceliance
+
+**Your sales team calls contacts from their Android phone in one click, straight from [Twenty CRM](https://twenty.com), and every call is logged automatically. Free, open source, self-hostable.**
+
+[![Maintained by Acceliance](https://img.shields.io/badge/maintained%20by-Acceliance-0097B6)](https://www.acceliance.fr)
+[![License MIT](https://img.shields.io/badge/license-MIT-success)](LICENSE)
+[![npm](https://img.shields.io/npm/v/@acceliance/twenty-click-to-call?logo=npm&label=npm)](https://www.npmjs.com/package/@acceliance/twenty-click-to-call)
+[![CI](https://github.com/acceliance/twenty-click-to-call/actions/workflows/ci.yml/badge.svg)](https://github.com/acceliance/twenty-click-to-call/actions/workflows/ci.yml)
+[![Twenty app](https://img.shields.io/badge/Twenty-2.59%2B-141414)](https://twenty.com)
+[![ntfy](https://img.shields.io/badge/push-ntfy-317F6F)](https://ntfy.sh)
+[![Android](https://img.shields.io/badge/phone-Android-3DDC84?logo=android&logoColor=white)](https://play.google.com/store/apps/details?id=io.heckel.ntfy)
+[![Languages](https://img.shields.io/badge/languages-EN%20%C2%B7%20FR-1F6FEB)](#languages)
+[![Self-hosted](https://img.shields.io/badge/data-stays%20on%20your%20servers-002395)](#requirements)
+
+> **Using Twenty for sales?** Acceliance built this app for its own team and **offers** it to the Twenty community.
+> Questions, feedback or a custom integration: **[contact@acceliance.fr](mailto:contact@acceliance.fr?subject=Twenty%20Click%20to%20Call)**.
+
+---
+
+## 🚀 Why Click to Call?
+
+Salespeople live in the CRM but call from their mobile. Copying numbers by hand is slow, error-prone, and calls rarely
+get logged.
+
+| | Before | With Click to Call |
+|---|---|---|
+| 📞 **Dialing** | Read the number on screen, type it on the phone | One click in Twenty, one tap on the phone |
+| ✅ **Accuracy** | Typos, wrong country code | Number normalized to international format (`+33…`) |
+| 📝 **Activity log** | Calls forgotten in the CRM | Every call logged as a done task on the contact, assigned to the caller |
+| 🗒️ **Call notes** | Written later, if ever | The task opens right away in the side panel, ready for notes |
+| 🔐 **Privacy** | Numbers in third-party apps | Push through **your own** ntfy server; nothing else leaves your infrastructure |
+| 📱 **Setup** | Custom mobile app to build and maintain | The free ntfy Android app, configured in two minutes |
+
+## ✨ What it does
 
 1. Click **Call** on a person in Twenty.
 2. Your phone gets a push notification with the contact's name, company and number.
@@ -89,3 +122,29 @@ Releases are published to npm from GitHub Actions with provenance (`.github/work
 ## License
 
 [MIT](LICENSE) © Acceliance
+
+---
+
+## 🏆 Built by Acceliance
+
+Click to Call is a small example of how **Acceliance** connects business tools with automation: a CRM button, a
+serverless function, a self-hosted push service and the phone's own dialer, assembled into one smooth workflow with
+no new mobile app to maintain.
+
+- **Twenty CRM apps**: buttons, logic functions, workflows, data models and integrations for your sales process;
+- **AI automation**: knowledge graphs, RAG, agents (MCP, A2A), governed AI and model-centric architectures;
+- **Sovereign deployments**: on-premise or on the host of your choice, GDPR and AI Act ready.
+
+Want the same approach for your own processes? **[Let's talk](mailto:contact@acceliance.fr?subject=Twenty%20%2F%20AI%20project)**.
+See also our free AI candidate-matching platform, [CVMatcher](https://github.com/acceliance/CVMatcher-Deploy), and our
+prompt generator, [MasterPrompter](https://masterprompter.acceliance.fr).
+
+## 🤝 About Acceliance
+
+**Acceliance** designs AI and automation architectures and solutions: knowledge graphs, RAG, agents, business
+modeling, AI governance and sovereign deployments.
+
+📧 [contact@acceliance.fr](mailto:contact@acceliance.fr) · 🌐 [www.acceliance.fr](https://www.acceliance.fr) ·
+🐙 [github.com/acceliance](https://github.com/acceliance)
+
+**Your CRM knows who to call. Now your phone does too.**
