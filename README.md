@@ -74,27 +74,95 @@ Each user receives notifications on their own topic: `<prefix>` + the part of th
 ## Requirements
 
 - Twenty 2.59 or later, with logic functions enabled on self-hosted servers (`LOGIC_FUNCTION_TYPE=LOCAL` or `LAMBDA`).
-- An ntfy server with access control. Self-hosting is strongly recommended: notifications contain contact names and phone numbers. A Docker setup takes a few minutes ([ntfy docs](https://docs.ntfy.sh/install/)).
+- An ntfy server with access control. Self-hosting is strongly recommended: notifications contain contact names and phone numbers. A Docker setup takes a few minutes ([step by step below](#1-ntfy-server)).
 - Android phones with the [ntfy app](https://play.google.com/store/apps/details?id=io.heckel.ntfy).
 
 ## Setup
 
 ### 1. ntfy server
 
-Run ntfy with `auth-default-access: deny-all`, then create a publisher account and a token for Twenty:
+ntfy is a single small container. The setup below is the one we run in production: ntfy with Docker Compose,
+behind [Caddy](https://caddyserver.com) for automatic HTTPS. Any Linux host with Docker works, including the
+server that hosts Twenty.
 
-```bash
-ntfy user add twenty
-ntfy access twenty 'call-*' write-only
-ntfy token add twenty            # copy the tk_… token
+**a. DNS.** Point a hostname such as `ntfy.example.com` to the server (A record), and open ports 80 and 443.
+
+**b. `docker-compose.yml`**
+
+```yaml
+services:
+  ntfy:
+    image: binwiederhier/ntfy:v2.11.0
+    command: serve
+    restart: unless-stopped
+    environment:
+      NTFY_BASE_URL: https://ntfy.example.com
+      NTFY_LISTEN_HTTP: ":80"
+      NTFY_BEHIND_PROXY: "true"
+      NTFY_CACHE_FILE: /var/lib/ntfy/cache.db
+      NTFY_AUTH_FILE: /var/lib/ntfy/user.db
+      NTFY_AUTH_DEFAULT_ACCESS: deny-all   # private: nobody reads or writes without an account
+      NTFY_ENABLE_SIGNUP: "false"
+      NTFY_ENABLE_LOGIN: "true"
+    volumes:
+      - ntfy-data:/var/lib/ntfy
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+
+volumes:
+  ntfy-data:
+  caddy-data:
 ```
 
-For each Twenty user (here `jane.doe@example.com`):
+**c. `Caddyfile`** (Caddy gets the Let's Encrypt certificate by itself)
+
+```
+ntfy.example.com {
+	reverse_proxy ntfy:80 {
+		flush_interval -1   # keep the phones' live connections streaming
+	}
+}
+```
+
+**d. Start and check**
 
 ```bash
-ntfy user add jane-doe
-ntfy access jane-doe call-jane-doe read-only
+docker compose up -d
+curl https://ntfy.example.com/v1/health          # {"healthy":true}
+curl -d test https://ntfy.example.com/call-test  # 403: anonymous access is refused, as intended
 ```
+
+**e. Accounts.** One publisher account with a token for Twenty:
+
+```bash
+docker compose exec ntfy ntfy user add twenty                     # asks for a password
+docker compose exec ntfy ntfy access twenty 'call-*' write-only
+docker compose exec ntfy ntfy token add twenty                    # copy the tk_… token
+```
+
+Then one read-only account per Twenty user (here `jane.doe@example.com`):
+
+```bash
+docker compose exec ntfy ntfy user add jane-doe
+docker compose exec ntfy ntfy access jane-doe call-jane-doe read-only
+```
+
+**f. Test a notification** before installing the app. Subscribe a phone to `call-jane-doe` (step 3), then:
+
+```bash
+curl -H "Authorization: Bearer tk_…" -H "Click: tel:+33100000000" \
+     -d "Tap me: the dialer should open" https://ntfy.example.com/call-jane-doe
+```
+
+Already have a reverse proxy (nginx, Traefik…)? Skip Caddy and proxy your hostname to the ntfy container, with
+response buffering off. See the [ntfy install docs](https://docs.ntfy.sh/install/) and
+[configuration reference](https://docs.ntfy.sh/config/).
 
 ### 2. App settings in Twenty
 

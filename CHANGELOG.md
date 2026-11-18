@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+- README: step-by-step ntfy server deployment (Docker Compose + Caddy, accounts, test notification).
+- Gallery screenshots: workspace contact count hidden.
+
 ## 0.1.2
 
 - Marketplace gallery: three screenshots (call button, logged call task, tasks tab) with a fictional contact.
