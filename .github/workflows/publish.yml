@@ -31,6 +31,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Enable Corepack
+        # Without it the runner uses Yarn 1, which refuses packageManager yarn@4
+        run: corepack enable
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
