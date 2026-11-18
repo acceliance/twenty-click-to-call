@@ -16,6 +16,7 @@
 
 > **Using Twenty for sales?** Acceliance built this app for its own team and **offers** it to the Twenty community.
 > Questions, feedback or a custom integration: **[contact@acceliance.fr](mailto:contact@acceliance.fr?subject=Twenty%20Click%20to%20Call)**.
+> Deployed it and happy with it? A word of congratulations on [Acceliance's LinkedIn page](https://www.linkedin.com/company/acceliance/) is very welcome 💚
 
 ---
 
@@ -75,7 +76,7 @@ Each user receives notifications on their own topic: `<prefix>` + the part of th
 
 - Twenty 2.59 or later, with logic functions enabled on self-hosted servers (`LOGIC_FUNCTION_TYPE=LOCAL` or `LAMBDA`).
 - An ntfy server with access control. Self-hosting is strongly recommended: notifications contain contact names and phone numbers. A Docker setup takes a few minutes ([step by step below](#1-ntfy-server)).
-- Android phones with the [ntfy app](https://play.google.com/store/apps/details?id=io.heckel.ntfy).
+- Phones with the ntfy app ([Google Play](https://play.google.com/store/apps/details?id=io.heckel.ntfy) or [App Store](https://apps.apple.com/us/app/ntfy/id1625396347)). Tested on Android; see [step 3](#3-each-phone) for iPhone.
 
 ## Setup
 
@@ -177,6 +178,15 @@ Install the app, then open **Settings → Apps → Click to Call → Variables**
 
 ### 3. Each phone
 
+Install the free ntfy app:
+
+[![Get it on Google Play](docs/badges/badge-googleplay.png)](https://play.google.com/store/apps/details?id=io.heckel.ntfy)
+[![Download on the App Store](docs/badges/badge-appstore.png)](https://apps.apple.com/us/app/ntfy/id1625396347)
+
+> **iPhone:** we have only tested Android. iOS delivers notifications from a self-hosted server through ntfy.sh, so
+> add `NTFY_UPSTREAM_BASE_URL: https://ntfy.sh` to the ntfy service (see the
+> [ntfy iOS docs](https://docs.ntfy.sh/config/#ios-instant-notifications)).
+
 In the ntfy app: **Settings → Manage users → Add user** with your ntfy server and account, then **+** → topic `call-jane-doe`, tick **Use another server**, enter your server URL and turn on **Instant delivery**.
 
 Reload Twenty after installing or updating the app to see the button.
@@ -202,6 +212,12 @@ twenty app apply --create   # first install; then `twenty app dev` or `twenty ap
 ```
 
 Releases are published to npm from GitHub Actions with provenance (`.github/workflows/publish.yml`): bump `version` in `package.json`, then push a `vX.Y.Z` tag.
+
+## 💚 Happy with it?
+
+If Click to Call saves your team time, tell us! A congratulations message or a short post about your setup on
+**[Acceliance's LinkedIn page](https://www.linkedin.com/company/acceliance/)** is very welcome, and a ⭐ on this
+repository helps other Twenty users find it.
 
 ## License
 
@@ -229,6 +245,6 @@ prompt generator, [MasterPrompter](https://masterprompter.acceliance.fr).
 modeling, AI governance and sovereign deployments.
 
 📧 [contact@acceliance.fr](mailto:contact@acceliance.fr) · 🌐 [www.acceliance.fr](https://www.acceliance.fr) ·
-🐙 [github.com/acceliance](https://github.com/acceliance)
+🐙 [github.com/acceliance](https://github.com/acceliance) · 💼 [LinkedIn](https://www.linkedin.com/company/acceliance/)
 
 **Your CRM knows who to call. Now your phone does too.**
