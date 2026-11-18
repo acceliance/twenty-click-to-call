@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.4
+
+- README: Google Play and App Store links for the ntfy app, iPhone setup note (upstream to ntfy.sh).
+- README: invitation to share feedback on Acceliance's LinkedIn page.
+
 ## 0.1.3
 
 - README: step-by-step ntfy server deployment (Docker Compose + Caddy, accounts, test notification).
