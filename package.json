@@ -1,6 +1,6 @@
 {
   "name": "@acceliance/twenty-click-to-call",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Twenty CRM app: call a contact from your Android phone in one click (ntfy push opens the dialer) and log the call as a task.",
   "license": "MIT",
   "author": "Acceliance",

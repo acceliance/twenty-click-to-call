@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5
+
+- Call task: the comment is prefilled with the number sent to the phone (`+33612345678 : `), ready for call notes.
+
 ## 0.1.4
 
 - README: Google Play and App Store links for the ntfy app, iPhone setup note (upstream to ntfy.sh).
