@@ -11,6 +11,7 @@ import {
   SEND_CALL_NOTIFICATION_ROUTE_PATH,
 } from 'src/constants/universal-identifiers';
 import type { NotifyResult } from 'src/types/notify-result';
+import { buildCallTaskBody } from 'src/utils/build-call-task-body';
 import { buildE164, formatForDisplay, type TwentyPhones } from 'src/utils/build-tel-uri';
 import { topicSuffixFor, type WorkspaceMember } from 'src/utils/topic-for-member';
 
@@ -42,12 +43,14 @@ const createdId = (response: { data?: Record<string, CreatedRecord | undefined> 
 const createCallTask = async (
   client: RestApiClient,
   title: string,
+  number: string,
   personId: string,
   workspaceMemberId: string,
 ): Promise<string> => {
   const taskId = createdId(
     await client.post<{ data: Record<string, CreatedRecord> }>('/rest/tasks', {
       title,
+      bodyV2: buildCallTaskBody(number, crypto.randomUUID()),
       dueAt: new Date().toISOString(),
       status: 'DONE',
       assigneeId: workspaceMemberId,
@@ -139,7 +142,7 @@ const handler = async (
   let taskError: string | null = null;
   if (taskTitle) {
     try {
-      taskId = await createCallTask(client, taskTitle, personId, workspaceMemberId);
+      taskId = await createCallTask(client, taskTitle, number, personId, workspaceMemberId);
     } catch (error) {
       taskError = error instanceof Error ? error.message : String(error);
       console.error(`task creation failed: ${taskError}`);
